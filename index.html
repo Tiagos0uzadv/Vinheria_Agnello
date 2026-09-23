@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,8 +9,105 @@
   </head>
   <body>
     <div class="container">
-      <h1 class="textEscopo">Vinharia Angnello</h1>
-      <h2 class="textDec">Bem-vindo à Vinharia Angnello</h2>
+      <div class="title-row">
+        <h1 class="textEscopo">Vinícola Angnello</h1>
+        <img class="brand-logo" src="photos/angnello.png" alt="Logo Angnello">
+      </div>
+      <h3 class="textDec">Bem-vindo à Vinharia Angnello</h3>
+
     </div>
+
+      <nav class="menu" aria-label="Navegação principal">
+        <a class="menu__brand" href="#inicio">Angnello</a>
+        <input class="menu__toggle" type="checkbox" id="menu-toggle" />
+        <label class="menu__button" for="menu-toggle">
+          <span class="menu__icon" aria-hidden="true"></span>
+          <span class="menu__label">Menu</span>
+        </label>
+        <ul class="menu__links">
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#vinhos">Vinhos</a></li>
+          <li><a href="#historia">Nossa história</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+
+      <main id="inicio">
+        <section id="vinhos" class="wine-menu" aria-labelledby="wine-menu-title">
+          <div class="wine-menu__header">
+            <p class="wine-menu__eyebrow">Seleção da casa</p>
+            <h2 id="wine-menu-title">Cardápio de vinhos</h2>
+            <p>Escolha o rótulo ideal para celebrar cada momento.</p>
+          </div>
+
+          <div class="wine-menu__grid">
+            <article class="wine-card">
+              <span class="wine-card__type">Tinto</span>
+              <h3>Angnello Cabernet</h3>
+              <p>Notas de frutas maduras, especiarias e final aveludado.</p>
+              <strong>R$ 89,90</strong>
+            </article>
+            <article class="wine-card">
+              <span class="wine-card__type">Rosé</span>
+              <h3>Brisa Rosé</h3>
+              <p>Leve, fresco e delicado, perfeito para dias ensolarados.</p>
+              <strong>R$ 74,90</strong>
+            </article>
+            <article class="wine-card">
+              <span class="wine-card__type">Branco</span>
+              <h3>Vale Chardonnay</h3>
+              <p>Aromas cítricos e toque floral com acidez equilibrada.</p>
+              <strong>R$ 79,90</strong>
+            </article>
+            <article class="wine-card">
+              <span class="wine-card__type">Tinto</span>
+              <h3>Reserva Merlot</h3>
+              <p>Textura macia, frutas vermelhas e notas sutis de carvalho.</p>
+              <strong>R$ 99,90</strong>
+            </article>
+            <article class="wine-card">
+              <span class="wine-card__type">Branco</span>
+              <h3>Encanto Sauvignon</h3>
+              <p>Fresco e aromático, com notas de maracujá e ervas.</p>
+              <strong>R$ 84,90</strong>
+            </article>
+            <article class="wine-card">
+              <span class="wine-card__type">Espumante</span>
+              <h3>Brut Celebration</h3>
+              <p>Perlage delicado e final refrescante para brindar.</p>
+              <strong>R$ 109,90</strong>
+            </article>
+            <article class="wine-card">
+              <span class="wine-card__type">Tinto</span>
+              <h3>Monte Tannat</h3>
+              <p>Intenso e estruturado, com taninos elegantes e persistentes.</p>
+              <strong>R$ 119,90</strong>
+            </article>
+            <article class="wine-card">
+              <span class="wine-card__type">Rosé</span>
+              <h3>Jardim Rosé</h3>
+              <p>Frutas frescas, cor vibrante e um final muito agradável.</p>
+              <strong>R$ 69,90</strong>
+            </article>
+            <article class="wine-card">
+              <span class="wine-card__type">Doce</span>
+              <h3>Colheita Tardia</h3>
+              <p>Doçura equilibrada e aromas de frutas amarelas maduras.</p>
+              <strong>R$ 94,90</strong>
+            </article>
+          </div>
+        </section>
+
+        <section id="historia" class="content-box">
+          <h2>Nossa história</h2>
+          <p>Tradição, cuidado e paixão em cada garrafa.</p>
+        </section>
+
+        <section id="contato" class="content-box">
+          <h2>Contato</h2>
+          <p>Entre em contato para conhecer nossa seleção.</p>
+        </section>
+      </main>
+
   </body>
 </html>
