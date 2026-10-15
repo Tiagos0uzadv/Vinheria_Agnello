@@ -1,3 +1,37 @@
+/* ==========================================================
+   efeitos.css - Check-Point 02
+   Pseudo-classes, pseudo-elementos, animações (@keyframes),
+   transições e transformações aplicadas ao site.
+   Importado pelo style.css.
+   ========================================================== */
+
+
+/* ---------- Seleção de texto (pseudo-elemento ::selection) ---------- */
+
+::selection {
+  background-color: #f3d9a4;
+  color: #4a0e0e;
+}
+
+
+/* ---------- Cabeçalho da página inicial ---------- */
+
+.textEscopo {
+  animation: fade-down 700ms ease-out both;
+}
+
+.brand-logo {
+  animation: logo-float 4s ease-in-out infinite;
+  transition: filter 250ms ease;
+}
+
+.brand-logo:hover {
+  filter: drop-shadow(0 0 8px rgb(74 14 14 / 45%));
+}
+
+
+/* ---------- Cabeçalho das páginas internas ---------- */
+
 .page-header {
   position: relative;
   width: 100%;
@@ -6,13 +40,15 @@
   align-items: center;
   gap: 10px;
   padding: 28px 20px 24px;
-  color: #f3d9a4;
+  background-color: #f3d9a4;
+  color: #4a0e0e;
   text-align: center;
 }
 
 .page-header img {
   width: clamp(52px, 8vw, 76px);
   height: auto;
+  animation: logo-float 4s ease-in-out infinite;
 }
 
 .page-header h1,
@@ -20,13 +56,30 @@
   font-family: Georgia, serif;
 }
 
+.page-header h1 {
+  animation: fade-down 700ms ease-out both;
+}
+
+/* filete vinho decorativo abaixo do título */
 .page-header::after {
   width: min(180px, 45vw);
   height: 2px;
   margin-top: 4px;
-  background: linear-gradient(90deg, transparent, #f3d9a4, transparent);
+  background: linear-gradient(90deg, transparent, #4a0e0e, transparent);
   content: "";
   animation: accent-grow 700ms ease-out both;
+}
+
+
+/* ---------- Menu de navegação ---------- */
+
+.menu__brand {
+  transition: color 200ms ease, letter-spacing 200ms ease;
+}
+
+.menu__brand:hover {
+  color: #ffffff;
+  letter-spacing: 0.04em;
 }
 
 .menu__links a {
@@ -46,12 +99,136 @@ button:focus-visible,
   outline-offset: 3px;
 }
 
+/* ícone "hambúrguer" vira um X quando o menu mobile está aberto */
+.menu__icon,
+.menu__icon::before,
+.menu__icon::after {
+  transition: transform 250ms ease, background-color 250ms ease, top 250ms ease;
+}
+
+.menu__toggle:checked + .menu__button .menu__icon {
+  background-color: transparent;
+}
+
+.menu__toggle:checked + .menu__button .menu__icon::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.menu__toggle:checked + .menu__button .menu__icon::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+.menu__toggle:checked ~ .menu__links {
+  animation: fade-down 250ms ease-out both;
+}
+
+
+/* ---------- Cartões de vinho (página inicial) ---------- */
+
+.wine-card {
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.wine-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgb(74 14 14 / 15%);
+}
+
+.wine-card__image {
+  transition: transform 300ms ease;
+}
+
+.wine-card:hover .wine-card__image {
+  transform: scale(1.05);
+}
+
+/* losango decorativo antes do tipo do vinho */
+.wine-card__type::before {
+  margin-right: 6px;
+  color: #966b39;
+  content: "\25C6";
+}
+
+/* cartões entram em sequência ao clicar em "Vinhos" no menu */
+.wine-menu:target .wine-card {
+  animation: page-arrive 550ms ease forwards;
+}
+
+.wine-menu:target .wine-card:nth-child(2) {
+  animation-delay: 100ms;
+}
+
+.wine-menu:target .wine-card:nth-child(3) {
+  animation-delay: 200ms;
+}
+
+
+/* ---------- Blocos de conteúdo ---------- */
+
+.content-box {
+  max-width: 1000px;
+  justify-self: center;
+  animation: page-arrive 650ms ease-out both;
+}
+
+/* marcador ornamental antes dos títulos das seções */
+.content-box h2::before {
+  display: inline-block;
+  margin-right: 9px;
+  color: #966b39;
+  content: "\2022";
+  transform: rotate(-12deg);
+}
+
+.content-box p:not(:last-child) {
+  margin-bottom: 14px;
+}
+
+/* letra capitular no primeiro parágrafo dos textos de história */
+.story h2 + p::first-letter {
+  color: #966b39;
+  font: 700 1.8em Georgia, serif;
+  line-height: 1;
+}
+
+.content-box a {
+  color: #966b39;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color 200ms ease, text-underline-offset 200ms ease;
+}
+
+.content-box a:hover {
+  color: #4a0e0e;
+  text-underline-offset: 6px;
+}
+
+.history-image {
+  width: min(100%, 420px);
+  max-height: 340px;
+  margin-top: 12px;
+  border-radius: 6px;
+  object-fit: cover;
+  transition: transform 250ms ease, box-shadow 250ms ease;
+}
+
+.history-image:hover {
+  transform: scale(1.025);
+  box-shadow: 0 8px 20px rgb(74 14 14 / 22%);
+}
+
+
+/* ---------- Galeria ---------- */
+
 .gallery {
   width: 100%;
   max-width: 1120px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
   gap: 20px;
+  justify-self: center;
 }
 
 .gallery figure {
@@ -65,6 +242,7 @@ button:focus-visible,
   transition: box-shadow 220ms ease, transform 220ms ease;
 }
 
+/* atraso alternado: as figuras pares entram um pouco depois */
 .gallery figure:nth-child(even) {
   animation-delay: 100ms;
 }
@@ -91,38 +269,15 @@ button:focus-visible,
   padding: 12px 4px 4px;
   color: #4a0e0e;
   font: 700 1rem Georgia, serif;
+  transition: color 220ms ease;
 }
 
-.content-box {
-  max-width: 1000px;
-  animation: page-arrive 650ms ease-out both;
-}
-
-.content-box h2::before {
-  display: inline-block;
-  margin-right: 9px;
+.gallery figure:hover figcaption {
   color: #966b39;
-  content: "\2022";
-  transform: rotate(-12deg);
 }
 
-.content-box p:not(:last-child) {
-  margin-bottom: 14px;
-}
 
-.history-image {
-  width: min(100%, 420px);
-  max-height: 340px;
-  margin-top: 12px;
-  border-radius: 6px;
-  object-fit: cover;
-  transition: transform 250ms ease, box-shadow 250ms ease;
-}
-
-.history-image:hover {
-  transform: scale(1.025);
-  box-shadow: 0 8px 20px rgb(74 14 14 / 22%);
-}
+/* ---------- Formulário de contato ---------- */
 
 .form-group {
   display: grid;
@@ -143,12 +298,24 @@ button:focus-visible,
   transition: border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
 }
 
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #a89180;
+  font-style: italic;
+}
+
 .form-group input:focus,
 .form-group textarea:focus {
   border-color: #966b39;
   background: #ffffff;
   box-shadow: 0 0 0 3px rgb(150 107 57 / 18%);
   outline: none;
+}
+
+/* borda avermelhada só depois que o usuário interagir com um campo inválido */
+.form-group input:user-invalid,
+.form-group textarea:user-invalid {
+  border-color: #b3261e;
 }
 
 button[type="submit"] {
@@ -167,6 +334,13 @@ button[type="submit"]:hover {
   background: #f3d9a4;
   color: #4a0e0e;
 }
+
+button[type="submit"]:active {
+  transform: scale(0.97);
+}
+
+
+/* ---------- Animações (@keyframes) ---------- */
 
 @keyframes page-arrive {
   from {
@@ -191,6 +365,32 @@ button[type="submit"]:hover {
     transform: scaleX(1);
   }
 }
+
+@keyframes fade-down {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes logo-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-4px) rotate(-3deg);
+  }
+}
+
+
+/* ---------- Acessibilidade e responsividade ---------- */
 
 @media (prefers-reduced-motion: reduce) {
   *,
