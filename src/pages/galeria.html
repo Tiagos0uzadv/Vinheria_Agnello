@@ -12,7 +12,6 @@
     <title>Vinheria Angnello | Galeria</title>
 
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/efeitos.css">
     <link rel="icon" href="../assets/imgs/logosite.png">
 
 </head>
@@ -30,11 +29,18 @@
     </header>
 
 
-    <nav class="menu">
+    <nav class="menu" aria-label="Navegação principal">
 
         <a class="menu__brand" href="../../index.html">
             Angnello
         </a>
+
+        <input class="menu__toggle" type="checkbox" id="menu-toggle">
+
+        <label class="menu__button" for="menu-toggle">
+            <span class="menu__icon" aria-hidden="true"></span>
+            <span class="menu__label">Menu</span>
+        </label>
 
         <ul class="menu__links">
 
